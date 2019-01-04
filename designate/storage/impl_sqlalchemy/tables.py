@@ -181,6 +181,21 @@ zone_masters = Table('zone_masters', metadata,
     mysql_charset='utf8'
 )
 
+rbac = Table('rbac', metadata,
+    Column('id', UUID(), default=utils.generate_uuid, primary_key=True),
+
+    Column('created_at', DateTime, default=lambda: timeutils.utcnow()),
+    Column('updated_at', DateTime, onupdate=lambda: timeutils.utcnow()),
+
+    Column('project_id', String(255), nullable=False, unique=False),
+    Column('object_id', UUID(), nullable=False, unique=False),
+    Column('target_tenant', String(255), nullable=False, unique=False),
+    Column('rbac_action', String(255), nullable=False, unique=False),
+
+    mysql_engine='InnoDB',
+    mysql_charset='utf8'
+)
+
 recordsets = Table('recordsets', metadata,
     Column('id', UUID, default=utils.generate_uuid, primary_key=True),
     Column('version', Integer, default=1, nullable=False),
