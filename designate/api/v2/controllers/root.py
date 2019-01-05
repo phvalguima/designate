@@ -27,6 +27,7 @@ from designate.api.v2.controllers import zones
 from designate.api.v2.controllers import tsigkeys
 from designate.api.v2.controllers import recordsets
 from designate.api.v2.controllers import quotas
+from designate.api.v2.controllers import rbac
 
 
 class RootController(object):
@@ -61,3 +62,4 @@ class RootController(object):
     tsigkeys = tsigkeys.TsigKeysController()
     recordsets = recordsets.RecordSetsViewController()
     quotas = quotas.QuotasController()
+    rbac = rbac.RbacController()

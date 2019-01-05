@@ -44,6 +44,7 @@ from designate.objects.zone_transfer_request import ZoneTransferRequest, ZoneTra
 from designate.objects.zone_transfer_accept import ZoneTransferAccept, ZoneTransferAcceptList  # noqa
 from designate.objects.zone_import import ZoneImport, ZoneImportList  # noqa
 from designate.objects.zone_export import ZoneExport, ZoneExportList  # noqa
+from designate.objects.rbac import RBACBaseObject
 
 #  Record Types
 

@@ -9,11 +9,11 @@ class RBACBaseObject(base.DictObjectMixin, base.PersistentObjectMixin,
     # rbac_action is intended for allowed/denied actions
     # such as access_as_shared
     fields = {
-        'id': common_types.UUIDField(),
-        'project_id': obj_fields.StringField(),
-        'object_id': common_types.UUIDField(),
-        'target_tenant': obj_fields.StringField(),
-        'rbac_action': obj_fields.StringField(),
+        'id': fields.UUIDFields(nullable=False),
+        'project_id': fields.UUIDFields(nullable=False),
+        'object_id': fields.UUIDFields(nullable=True),
+        'target_tenant': fields.UUIDFields(nullable=True),
+        'rbac_action': fields.StringFields(maxLength=255), 
     }
 
     fields_no_update = ['id', 'project_id', 'object_id']
