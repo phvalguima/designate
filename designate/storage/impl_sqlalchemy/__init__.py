@@ -879,7 +879,9 @@ class SQLAlchemyStorage(sqlalchemy_base.SQLAlchemy, storage_base.Storage):
         return self._find_rbacrules(context)
 
     # TODO: define if "some_id" is really needed or not
+    # atm, not needed
     def _find_rbacrules(self, context, some_id=None):
+        LOG.info("storage _find_rbacrules with context: %(context)s", {'context': context.__dict__})
         return self._find(context,tables.rbac, objects.RBACBaseObject,
                           objects.rbacRBACBaseObjectList, exceptions.RBACNotFound)
 

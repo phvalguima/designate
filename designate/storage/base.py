@@ -458,6 +458,14 @@ class Storage(DriverPlugin):
         """
 
     @abc.abstractmethod
+    def list_rbacrules(self, context):
+        """
+        Get all rbac rules available for that context
+
+        :param context: RPC Context.
+        """
+        
+    @abc.abstractmethod
     def create_blacklist(self, context, blacklist):
         """
         Create a Blacklist.

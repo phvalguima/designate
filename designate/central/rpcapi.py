@@ -304,7 +304,25 @@ class CentralAPI(object):
 
     # RBAC methods
     def list_rbacrules(self, context):
+        LOG.info("central/rpcapi.py list_rbacrules with context: %(context)s", {'context': context.__dict__})
         return self.client.call(context, 'list_rbacrules')
+
+    def get_rbacrule(self, context, rbac_id):
+        LOG.info("central/rpcapi.py get_rbacrule with context: %(context)s %(rbac_id)s", {'context': context.__dict__, 'rbac_id': rbac_id})
+        return self.client.call(context, 'get_rbacrule', rbac_id=rbac_id)
+
+    def create_rbacrule(self, context, rbacrule):
+        LOG.info("central/rpcapi.py create_rbacrule with context: %(context)s %(rbacrule)s", {'context': context.__dict__, 'rbacrule': rbacrule})
+        return self.client.call(context, 'create_rbacrule', rbac=rbacrule)
+
+    def update_rbacrule(self, context, rbacrule):
+        LOG.info("central/rpcapi.py update_rbacrule with context: %(context)s %(rbacrule)s", {'context': context.__dict__, 'rbacrule': rbacrule})
+        return self.client.call(context, 'update_rbacrule', rbac=rbacrule)
+
+    def delete_rbacrule(self, context, rbac_id):
+        LOG.info("central/rpcapi.py delete_rbacrule with context: %(context)s %(id)s", {'context': context.__dict__, 'id': rbac_id})
+        return self.client.call(context, 'delete_rbacrule', rbac_id=rbac_id)
+
 
     # Blacklisted Zone Methods
     def create_blacklist(self, context, blacklist):
