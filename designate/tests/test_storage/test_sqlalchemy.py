@@ -50,6 +50,7 @@ class SqlalchemyStorageTest(StorageTestCase, TestCase):
             u'pool_targets',
             u'pools',
             u'quotas',
+            u'rbac',
             u'records',
             u'recordsets',
             u'service_statuses',

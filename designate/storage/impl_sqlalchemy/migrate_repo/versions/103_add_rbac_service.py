@@ -20,7 +20,7 @@ SERVICE_STATES = [
 def upgrade(migrate_engine):
     meta.bind = migrate_engine
 
-    rbac = Table('rbac', metadata,
+    rbac = Table('rbac', meta,
                  Column('id', UUID(), default=utils.generate_uuid, primary_key=True),
                  
                  Column('created_at', DateTime, default=lambda: timeutils.utcnow()),
