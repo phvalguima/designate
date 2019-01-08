@@ -302,6 +302,10 @@ class CentralAPI(object):
         return self.client.call(context, 'update_floatingip', region=region,
                                 floatingip_id=floatingip_id, values=values)
 
+    # RBAC methods
+    def list_rbacrules(self, context):
+        return self.client.call(context, 'list_rbacrules')
+
     # Blacklisted Zone Methods
     def create_blacklist(self, context, blacklist):
         return self.client.call(context, 'create_blacklist',

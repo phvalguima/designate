@@ -874,6 +874,16 @@ class SQLAlchemyStorage(sqlalchemy_base.SQLAlchemy, storage_base.Storage):
 
         return result[0]
 
+    # RBAC Methods
+    def list_rbacrules(self, context):
+        return self._find_rbacrules(context)
+
+    # TODO: define if "some_id" is really needed or not
+    def _find_rbacrules(self, context, some_id=None):
+        return self._find(context,tables.rbac, objects.RBACBaseObject,
+                          objects.rbacRBACBaseObjectList, exceptions.RBACNotFound)
+
+    
     # Blacklist Methods
     def _find_blacklists(self, context, criterion, one=False, marker=None,
                          limit=None, sort_key=None, sort_dir=None):

@@ -18,12 +18,21 @@ class RbacController(rest.RestController):
         """List RBAC rules that comply with either object or project ids for a Tenant"""
         request = pecan.request
         context = request.environ['context']
-        body = request.body_dict
 
-        rbac_obj = DesignateAdapter.parse('API_v2', body, RBACBaseObject())
-        
-        object_id = rbac_obj.object_id
-        project_id = rbac_obj.project_id
+        object_id = None
+        project_id = None
+
+        try:
+            body = request.body_dict
+            rbac_obj = DesignateAdapter.parse('API_v2', body, RBACBaseObject())
+            object_id = rbac_obj.object_id
+            project_id = rbac_obj.project_id
+        except Exception as e:
+            if str(e) != 'TODO: Unsupported Content Type':
+                raise
+            else:
+                # Got a blank body
+                body = dict() 
 
         #rules = self.central_api.list_rbac_rules(object_id=object_id,
         #                                         project_id=project_id)

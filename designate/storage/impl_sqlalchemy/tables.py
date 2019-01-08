@@ -187,9 +187,9 @@ rbac = Table('rbac', metadata,
     Column('created_at', DateTime, default=lambda: timeutils.utcnow()),
     Column('updated_at', DateTime, onupdate=lambda: timeutils.utcnow()),
 
-    Column('project_id', String(255), nullable=False, unique=False),
+    Column('project_id', UUID(), nullable=False, unique=False),
     Column('object_id', UUID(), nullable=False, unique=False),
-    Column('target_tenant', String(255), nullable=False, unique=False),
+    Column('target_tenant', UUID(), nullable=False, unique=False),
     Column('rbac_action', String(255), nullable=False, unique=False),
 
     mysql_engine='InnoDB',

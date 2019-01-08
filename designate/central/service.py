@@ -1516,6 +1516,16 @@ class Service(service.RPCService, service.Service):
 
         return self.storage.count_recordsets(context, criterion)
 
+
+    # RBAC Methods
+    def list_rbac_rule(self, context):
+        #policy.check('list_rbacrules', context)
+
+        rbacrules = self.storage.list_rbacrules(context)
+
+        return rbacrules
+        
+    
     # Record Methods
     @notification('dns.record.create')
     @synchronized_zone()
